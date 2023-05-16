@@ -1,4 +1,4 @@
-﻿using Application.Helpers;
+﻿using Application.Extensions;
 using Application.Interfaces;
 using Domain.Exceptions;
 using MediatR;
@@ -20,11 +20,11 @@ namespace Application.Mediator.Node.CreateNode
             if (tree is null)
                 throw new SecureException($"no such a tree with name {request.TreeName}");
 
-            var parentNode = NodeHelper.FindNode(tree, request.ParentNodeId);
+            var parentNode = tree.FindNode(request.ParentNodeId);
             if (parentNode is null)
                 throw new SecureException($"no such a node with id {request.ParentNodeId}");
 
-            if(NodeHelper.HasANodeWithName(parentNode, request.NodeName))
+            if(parentNode.HasANodeWithName(request.NodeName))
                 throw new SecureException($"a node with such a name {request.NodeName} is already exists in a tree {request.TreeName}");
 
             await _nodeRepository.Create(new Domain.Entities.Node

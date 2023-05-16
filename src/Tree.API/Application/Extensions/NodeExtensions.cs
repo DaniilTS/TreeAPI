@@ -1,10 +1,10 @@
 ﻿using Domain.Entities;
 
-namespace Application.Helpers
+namespace Application.Extensions
 {
-    public static class NodeHelper
+    public static class NodeExtensions
     {
-        public static Node FindNode(Node tree, Guid id)
+        public static Node FindNode(this Node tree, Guid id)
         {
             if (tree.Id == id)
             {
@@ -23,12 +23,12 @@ namespace Application.Helpers
             return null;
         }
 
-        public static bool HasANodeWithName(Node node, string name)
+        public static bool HasANodeWithName(this Node node, string name)
         {
             return node.Children.Any(x => x.Name == name);
         }
 
-        public static bool HasASiblingWithName(Node node, string name)
+        public static bool HasASiblingWithName(this Node node, string name)
         {
             if (node.Parent == null)
                 return false;

@@ -1,4 +1,4 @@
-﻿using Application.Helpers;
+﻿using Application.Extensions;
 using Application.Interfaces;
 using Domain.Exceptions;
 using MediatR;
@@ -20,7 +20,7 @@ namespace Application.Mediator.Node.DeleteNode
             if (tree is null)
                 throw new SecureException($"no such a tree with name {request.TreeName}");
 
-            var node = NodeHelper.FindNode(tree, request.NodeId);
+            var node = tree.FindNode(request.NodeId);
             if (node is null)
                 throw new SecureException($"no such a node with id {request.NodeId}");
 
