@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Represents entire tree API
+    /// </summary>
     [ApiController]
     [ControllerName("user.tree")]
     public class TreeController: Controller
@@ -20,7 +23,15 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns your entire tree. If your tree doesn't exist it will be created automatically.
+        /// </remarks>
+        /// <returns></returns>
         [HttpPost("api.user.tree.get")]
+        [ProducesResponseType(typeof(NodeDTO), StatusCodes.Status200OK)]
         public async Task<ActionResult> GetTree([FromQuery] GetTreeOrCreateRequest request)
         {
             var result = await _mediator.Send(request);

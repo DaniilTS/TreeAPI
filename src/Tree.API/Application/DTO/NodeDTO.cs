@@ -1,6 +1,4 @@
-﻿using Domain.Entities;
-
-namespace Application.DTO
+﻿namespace Application.DTO
 {
     public class NodeDTO
     {
@@ -8,10 +6,6 @@ namespace Application.DTO
 
         public string Name { get; set; }
 
-        public Guid? ParentId { get; set; }
-
-        public NodeDTO Parent { get; set; }
-
-        public IList<NodeDTO> Childrens { get; } = new List<NodeDTO>();
+        public IList<NodeDTO> Children { get; } = new List<NodeDTO>();
     }
 }

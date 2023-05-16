@@ -12,7 +12,7 @@ namespace Application.Helpers
             }
             else
             {
-                foreach (var child in tree.Childrens)
+                foreach (var child in tree.Children)
                 {
                     var res = FindNode(child, id);
                     if (res != null)
@@ -25,7 +25,7 @@ namespace Application.Helpers
 
         public static bool HasANodeWithName(Node node, string name)
         {
-            return node.Childrens.Any(x => x.Name == name);
+            return node.Children.Any(x => x.Name == name);
         }
 
         public static bool HasASiblingWithName(Node node, string name)

@@ -23,7 +23,7 @@ namespace Persistence
                 entity.HasKey(x => x.Id);
                 entity.Property(x => x.Name);
                 entity.HasOne(x => x.Parent)
-                    .WithMany(x => x.Childrens)
+                    .WithMany(x => x.Children)
                     .HasForeignKey(x => x.ParentId)
                     .IsRequired(false)
                     .OnDelete(DeleteBehavior.Cascade);

@@ -10,6 +10,7 @@ namespace Application.Profiles
         {
             CreateMap<Node, NodeDTO>();
             CreateMap<Journal, JournalDTO>();
+            CreateMap<Journal, JournalInfoDTO>();
         }
     }
 }

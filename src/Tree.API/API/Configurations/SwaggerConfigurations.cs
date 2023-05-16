@@ -1,4 +1,6 @@
-﻿namespace API.Configurations
+﻿using System.Reflection;
+
+namespace API.Configurations
 {
     public static class SwaggerConfigurations
     {
@@ -9,7 +11,9 @@
                 options.CustomOperationIds((apiDescription) =>
                 $"{apiDescription.ActionDescriptor.RouteValues["controller"]}_{apiDescription.ActionDescriptor.RouteValues["action"]}");
 
-                options.EnableAnnotations();
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath, true);
             });
 
             return applicationBuilder;

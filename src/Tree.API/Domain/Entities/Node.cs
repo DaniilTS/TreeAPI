@@ -10,6 +10,6 @@
 
         public virtual Node Parent { get; set; }
 
-        public virtual IList<Node> Childrens { get; } = new List<Node>();
+        public virtual IList<Node> Children { get; } = new List<Node>();
     }
 }

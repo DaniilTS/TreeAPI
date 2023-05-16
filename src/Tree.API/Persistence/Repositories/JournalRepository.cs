@@ -34,7 +34,7 @@ namespace Persistence.Repositories
                 resultQuery = resultQuery.Skip(filter.Skip.Value);
 
             if (filter.Take != null)
-                resultQuery = resultQuery.Skip(filter.Take.Value);
+                resultQuery = resultQuery.Take(filter.Take.Value);
 
             if (filter.Search != null)
                 resultQuery = resultQuery.Where(x => EF.Functions.Like(x.EventId, $"%{filter.Search}%"));
